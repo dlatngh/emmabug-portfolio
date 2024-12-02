@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import {NextResponse} from "next/server";
 import clientPromise from "@/lib/mongodb";
 
 const database = process.env.MONGODB_DATABASE as string;
@@ -13,15 +13,15 @@ export async function GET() {
     console.log("Using database: portfolio-db");
     const artList = await db
       .collection(art)
-      .find({}, { projection: { previewImgUrl: 1, _id: 1 } })
+      .find({}, {projection: {previewImgUrl: 1, _id: 1}})
       .toArray();
     console.log("Art Collection:", artList);
     return NextResponse.json(artList);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { error: "Failed to fetch images" },
-      { status: 500 }
+      {error: "Failed to fetch images"},
+      {status: 500}
     );
   }
 }
