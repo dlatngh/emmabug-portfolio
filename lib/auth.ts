@@ -1,15 +1,15 @@
-import NextAuth from "next-auth"
-import Google from "next-auth/providers/google"
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-    providers: [Google],
-    callbacks: {
-        signIn({ profile }) {
-            const allowedEmail = process.env.EMAIL as string
-            if (profile?.email?.endsWith(allowedEmail)) {
-                return true; // Allow sign-in
-            }
-            return false;
-        }
-    }
-})
+  providers: [Google],
+  callbacks: {
+    signIn({ profile }) {
+      const whitelistEmail = process.env.WHITELIST_EMAIL as string;
+      if (profile?.email?.endsWith(whitelistEmail)) {
+        return true; // Allow sign-in
+      }
+      return false;
+    },
+  },
+});

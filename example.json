@@ -1,0 +1,7 @@
+{
+  "title": "bucketfolder",
+  "imgUrl": "artwork-main.png",
+  "description": "Description for artwork",
+  "additionalImages": ["artwork-one.png", "artwork-two.png"],
+  "dateCreated": "2024-12-01T10:30:00Z"
+}
