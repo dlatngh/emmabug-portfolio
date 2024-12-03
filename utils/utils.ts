@@ -1,4 +1,14 @@
-export function validatePostRequest(artwork: any): {
+export interface ArtDocument {
+  title: string;
+  artName: string;
+  previewImgUrl: string;
+  imgUrl: string;
+  description: string;
+  additionalImages: string[];
+  dateCreated: string;
+}
+
+export function validatePostRequest(artwork: ArtDocument): {
   valid: boolean;
   errors?: string[];
 } {
@@ -6,6 +16,16 @@ export function validatePostRequest(artwork: any): {
 
   if (!artwork.title || typeof artwork.title !== "string") {
     errors.push("Invalid or missing 'title'. It must be a non-empty string.");
+  }
+
+  if (!artwork.artName || typeof artwork.artName !== "string") {
+    errors.push("Invalid or missing 'artName'. It must be a non-empty string.");
+  }
+
+  if (!artwork.artName || typeof artwork.artName !== "string") {
+    errors.push(
+      "Invalid or missing 'previewImgUrl'. It must be a non-empty string."
+    );
   }
 
   if (!artwork.imgUrl || typeof artwork.imgUrl !== "string") {

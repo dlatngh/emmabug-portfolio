@@ -5,6 +5,8 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Divider from "@/components/Divider";
 import React from "react";
+import Image from "next/image";
+import { getObjectUrl } from "@/utils/aws/s3";
 
 const font = Delius({ subsets: ["latin"], weight: "400" });
 
@@ -12,18 +14,24 @@ export const metadata: Metadata = {
   title: "bugs portfolio",
   description: "emma bugs art",
 };
-
+const websiteBanner: string = getObjectUrl("", "websitebanner.png");
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
-        className={`${font.className} flex flex-col space-y-5 pt-14 antialiased bg-pink-50`}
+        className={`${font.className} flex flex-col space-y-5 pt-10 antialiased bg-pink-50`}
       >
-        <div className="title text-black m-auto lowercase border-pink-200 border-2 p-6 text-sm sm:text-lg lg:text-2xl">
-          ✨ ٩꒰ ˘ ³˘꒱۶ Anahi&rsquo;s Art Portfolio or something! ٩꒰ ˘ ³˘꒱۶
-          ✨
+        <div className="title text-black m-auto lowercase text-sm sm:text-lg lg:text-2xl">
+          <a href="/">
+            <Image
+              src={websiteBanner}
+              alt="website banner"
+              width={550}
+              height={400}
+            />
+          </a>
         </div>
         <div className="navbar text-black m-auto lowercase">
           <NavBar />

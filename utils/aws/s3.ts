@@ -14,5 +14,9 @@ async function createS3Client() {
 }
 
 export function getObjectUrl(objectFolder: string, objectKey: string): string {
+  if (objectFolder.length === 0) {
+    return `https://${S3_BUCKET_NAME}.s3.${REGION}.amazonaws.com/${objectKey}`;
+  }
+  const folder = objectFolder.replaceAll(" ", "+")
   return `https://${S3_BUCKET_NAME}.s3.${REGION}.amazonaws.com/${objectFolder}/${objectKey}`;
 }

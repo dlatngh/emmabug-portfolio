@@ -11,7 +11,7 @@ export async function GET() {
     const db = client.db(database);
     const artList = await db
       .collection(collection)
-      .find({}, { projection: { previewImgUrl: 1, _id: 1 } })
+      .find({}, { projection: { preview: 1, _id: 1, title: 1 } })
       .toArray();
     return NextResponse.json(artList);
   } catch (error) {
