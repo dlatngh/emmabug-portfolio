@@ -1,8 +1,8 @@
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client } from "@aws-sdk/client-s3";
 import { assumeRole } from "./sts";
 
-const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
-const REGION = process.env.REGION;
+const S3_BUCKET_NAME = process.env.NEXT_PUBLIC_S3_BUCKET_NAME as string;
+const AWS_REGION = process.env.NEXT_PUBLIC_AWS_REGION as string;
 
 async function createS3Client() {
   const assumeRoleCredentials = await assumeRole();
@@ -15,8 +15,8 @@ async function createS3Client() {
 
 export function getObjectUrl(objectFolder: string, objectKey: string): string {
   if (objectFolder.length === 0) {
-    return `https://${S3_BUCKET_NAME}.s3.${REGION}.amazonaws.com/${objectKey}`;
+    return `https://${S3_BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com/${objectKey}`;
   }
-  const folder = objectFolder.replaceAll(" ", "+")
-  return `https://${S3_BUCKET_NAME}.s3.${REGION}.amazonaws.com/${objectFolder}/${objectKey}`;
+  const folder = objectFolder.replaceAll(" ", "+");
+  return `https://${S3_BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com/${objectFolder}/${objectKey}`;
 }

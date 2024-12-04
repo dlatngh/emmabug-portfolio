@@ -10,6 +10,7 @@ export async function GET(
   context: { params: Promise<{ id: string }> }
 ) {
   const { id } = await context.params;
+  console.log(process.env.MONGODB_URI as string);
 
   if (!ObjectId.isValid(id)) {
     return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
