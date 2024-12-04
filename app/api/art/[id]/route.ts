@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { BSON, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb";
 
 const database = process.env.MONGODB_DATABASE as string;
 const art = process.env.COLLECTION_ART as string;
 
 export async function GET(req: Request, context: { params: { id: string } }) {
-  const { id } = context.params;
+  const { id } = await context.params;
 
   if (!ObjectId.isValid(id)) {
     return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
