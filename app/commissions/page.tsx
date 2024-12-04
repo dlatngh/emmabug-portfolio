@@ -1,6 +1,6 @@
 export default function Commissions() {
   return (
-    <div className="text-black m-auto text-2xl">
+    <div className="text-black m-auto">
       (⊙﹏⊙✿) under construction (⊙﹏⊙✿)
     </div>
   );

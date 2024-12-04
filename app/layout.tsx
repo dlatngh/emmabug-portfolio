@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   title: "bugs portfolio",
   description: "emma bugs art",
 };
-const websiteBanner: string = getObjectUrl("", "websitebanner.png");
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -24,17 +23,17 @@ export default function RootLayout({
       <body
         className={`${font.className} flex flex-col space-y-5 pt-10 antialiased bg-pink-50`}
       >
-        <div className="title text-black m-auto lowercase text-sm sm:text-lg lg:text-2xl">
+        <div className="title text-black m-auto lowercase text-sm sm:text-lg lg:text-2xl px-5">
           <Link href="/">
             <Image
-              src={websiteBanner}
+              src={"/website-banner.webp"}
               alt="website banner"
               width={550}
               height={400}
             />
           </Link>
         </div>
-        <div className="navbar text-black m-auto lowercase">
+        <div className="navbar text-black m-auto lowercase ">
           <NavBar />
         </div>
         <Divider />
