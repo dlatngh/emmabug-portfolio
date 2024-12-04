@@ -21,7 +21,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <div className="flex flex-row m-auto justify-evenly w-full lg:space-x-12 pb-10">
+    <div className="flex flex-row m-auto justify-evenly w-full lg:space-x-12">
       {socials.map((social, id) => (
         <Link href={social.href} key={id}>
           <Image src={social.src} alt={social.name} width={100} height={100} />

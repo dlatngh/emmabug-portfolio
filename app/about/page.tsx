@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function About() {
   return (
     <div className="text-black m-auto text-2xl flex flex-col space-y-12">
-      <div className="flex flex-col lg:flex-row space-x-4">
+      <div className="flex flex-col lg:flex-row space-x-4 -mb-12">
         <div className="relative h-full flex-shrink-0 m-auto">
           <Image
             className="object-cover h-full w-auto"
@@ -17,7 +17,7 @@ export default function About() {
         </div>
         <div className="flex flex-col justify-center -mt-5 max-w-[100%] lg:max-w-[32rem] px-5">
           <h1 className="text-xl text-start pb-2">About me</h1>
-          <p className="text-base flex flex-col text-wrap -mb-4">
+          <p className="text-base flex flex-col text-wrap">
             <span>
               Hi! I’m Emma Lemke, a 19-year-old aspiring character concept
               artist based in San Francisco, California.
@@ -93,7 +93,7 @@ export default function About() {
       </div>
       <Divider />
       <div className="flex flex-col lg:flex-row space-x-4">
-        <div className="flex flex-col justify-center max-w-[100%] lg:max-w-[32rem] px-10 lg:ml-auto ">
+        <div className="flex flex-col justify-center max-w-[100%] lg:max-w-[32rem] px-10 lg:ml-auto">
           <h1 className="text-xl text-end pb-2">Mission Statement</h1>
           <p className="text-base flex flex-col text-wrap ">
             <span>
@@ -129,14 +129,12 @@ export default function About() {
           <p className="text-base flex flex-col text-wrap ">
             <span>
               I’m currently open to freelance work, commissions, and
-              collaborations. Please take a look at my work and website and
+              collaborations. Please take a look at my work and portfolio and
               contact me with any questions!
             </span>
           </p>
         </div>
       </div>
-      <Divider />
-      <Footer />
     </div>
   );
 }

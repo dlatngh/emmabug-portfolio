@@ -4,10 +4,9 @@ import NavBar from "@/components/NavBar";
 import Divider from "@/components/Divider";
 import React from "react";
 import Image from "next/image";
-import { getObjectUrl } from "@/utils/aws/s3";
 import Link from "next/link";
 import "./globals.css";
-
+import Footer from "@/components/Footer";
 
 const font = Delius({ subsets: ["latin"], weight: "400" });
 
@@ -38,6 +37,10 @@ export default function RootLayout({
         </div>
         <Divider />
         {children}
+        <div className="flex flex-col space-y-10 py-10">
+          <Divider />
+          <Footer />
+        </div>
       </body>
     </html>
   );
