@@ -14,13 +14,14 @@ export const metadata: Metadata = {
   title: "bugs portfolio",
   description: "emma bugs art",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
-        className={`${font.className} flex flex-col space-y-5 pt-10 antialiased bg-pink-50`}
+        className={`${font.className} flex flex-col space-y-5 pt-10 antialiased bg-pink-50 min-h-screen`}
       >
         <div className="title text-black m-auto lowercase text-sm sm:text-lg lg:text-2xl px-5">
           <Link href="/">
@@ -36,7 +37,9 @@ export default function RootLayout({
           <NavBar />
         </div>
         <Divider />
-        {children}
+        <div className="flex-grow flex flex-col min-h-screen">
+          {children}
+        </div>
         <div className="flex flex-col space-y-10 py-10">
           <Divider />
           <Footer />
