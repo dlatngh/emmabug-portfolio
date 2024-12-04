@@ -15,8 +15,7 @@ export default function Showcase(props: ShowcaseProps) {
   useEffect(() => {
     fetch(`/api/art/${props.id}`)
       .then((response) => response.json())
-      .then((data) => setArt(data))
-      .then(() => console.log(art));
+      .then((data) => setArt(data));
   }, []);
 
   return (

@@ -1,24 +1,27 @@
 import { NextResponse } from "next/server";
-import { ObjectId } from "mongodb";
+import { BSON, ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb";
 
 const database = process.env.MONGODB_DATABASE as string;
 const art = process.env.COLLECTION_ART as string;
 
-export async function GET(req: Request, context: { params: { id: string } }) {
+export async function GET(
+  req: Request,
+  context: { params: Promise<{ id: string }> }
+) {
   const { id } = await context.params;
 
   if (!ObjectId.isValid(id)) {
     return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
   }
 
-  const oid = new ObjectId(id); // No need for BSON prefix here.
+  const oid = new BSON.ObjectId(id);
 
   try {
     const client = await clientPromise;
     const db = client.db(database);
     const res = await db.collection(art).findOne({ _id: oid });
-    if (!res) {
+    if (res === null) {
       return NextResponse.json({ error: "Not Found." }, { status: 404 });
     }
     return NextResponse.json(res);
