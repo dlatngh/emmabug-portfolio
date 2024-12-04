@@ -3123,9 +3123,9 @@ next-auth@^5.0.0-beta.25:
   dependencies:
     "@auth/core" "0.37.2"
 
-next@15.0.3:
+next@^15.0.3:
   version "15.0.3"
-  resolved "https://registry.npmjs.org/next/-/next-15.0.3.tgz"
+  resolved "https://registry.yarnpkg.com/next/-/next-15.0.3.tgz#804f5b772e7570ef1f088542a59860914d3288e9"
   integrity sha512-ontCbCRKJUIoivAdGB34yCaOcPgYXr9AAkV/IwqFfWWTXEPUgLYkSkqBhIk9KK7gGmgjc64B+RdoeIDM13Irnw==
   dependencies:
     "@next/env" "15.0.3"

@@ -9,9 +9,16 @@ interface Preview {
 }
 
 async function fetchArtPreviews() {
-  const res = await fetch(`${process.env.NEXT_URL}/api/art`);
-  if (!res.ok) throw new Error("Failed to fetch art previews");
-  return res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_URL}/api/art`
+    );
+    if (!res.ok) throw new Error("Failed to fetch art previews");
+    return await res.json();
+  } catch (error) {
+    console.error("Error fetching art previews:", error);
+    return [];
+  }
 }
 
 // export default async function Home() {
@@ -46,9 +53,8 @@ async function fetchArtPreviews() {
 export default async function Home() {
   const previews = await fetchArtPreviews();
 
-  console.log(previews);
   return (
-    <div className="gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 px-10 sm:px-28 lg:px-64">
+    <div className="max-w-screen-sm  lg:max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 px-10 sm:px-6 lg:px-40">
       {previews.map((item: Preview) => (
         <Link
           href={`/art/${item._id}`}

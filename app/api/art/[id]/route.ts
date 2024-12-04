@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb";
 import { BSON, ObjectId } from "mongodb";
+import clientPromise from "@/lib/mongodb";
 
 const database = process.env.MONGODB_DATABASE as string;
 const art = process.env.COLLECTION_ART as string;
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } = await context.params;
 
   if (!ObjectId.isValid(id)) {
     return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
@@ -34,13 +34,13 @@ export async function GET(
   }
 }
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params;
+// export async function PUT(
+//   req: Request,
+//   context: { params: Promise<{ id: string }> }
+// ) {
+//   const { id } = await context.params;
 
-  if (!ObjectId.isValid(id)) {
-    return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
-  }
-}
+//   if (!ObjectId.isValid(id)) {
+//     return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+//   }
+// }

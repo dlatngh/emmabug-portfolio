@@ -35,7 +35,7 @@ export default async function Page({
               {publishedDate}
             </h3>
           </div>
-          <h3 className="text-right text-xs lg:text-lg lg:hidden">
+          <h3 className="text-right text-xs pb-4 lg:text-lg lg:hidden">
             published {publishedDate}
           </h3>
           <div className="flex-col flex space-y-2 text-middle lg:text-left">
