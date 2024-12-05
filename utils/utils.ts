@@ -7,6 +7,8 @@ export interface ArtDocument {
   description: string;
   additionalImages: string[];
   dateCreated: string;
+  medium: string;
+  context: string;
 }
 
 export function validatePostRequest(artwork: ArtDocument): {
@@ -21,6 +23,14 @@ export function validatePostRequest(artwork: ArtDocument): {
 
   if (!artwork.artName || typeof artwork.artName !== "string") {
     errors.push("Invalid or missing 'artName'. It must be a non-empty string.");
+  }
+
+  if (!artwork.medium || typeof artwork.medium !== "string") {
+    errors.push("Invalid or missing 'medium'. It must be a non-empty string.");
+  }
+
+  if (!artwork.context || typeof artwork.context !== "string") {
+    errors.push("Invalid or missing 'context'. It must be a non-empty string.");
   }
 
   if (!artwork.preview || typeof artwork.preview !== "string") {
