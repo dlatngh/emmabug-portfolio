@@ -9,7 +9,7 @@ const navigation = [
 export default function NavBar() {
   return (
     <nav className="navbar">
-      <ul className="navbar-menu flex flex-row space-x-2 lg:space-x-2 ">
+      <ul className="navbar-menu flex flex-row space-x-2 lg:space-x-2 px-2">
         {navigation.map((item, index) => (
           <Link
             href={item.href}

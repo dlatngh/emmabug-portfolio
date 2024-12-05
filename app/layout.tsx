@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const font = Delius({ subsets: ["latin"], weight: "400" });
 
@@ -37,13 +38,12 @@ export default function RootLayout({
           <NavBar />
         </div>
         <Divider />
-        <div className="flex-grow flex flex-col min-h-screen">
-          {children}
-        </div>
+        <div className="flex-grow flex flex-col min-h-screen">{children}</div>
         <div className="flex flex-col space-y-10 py-10">
           <Divider />
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
