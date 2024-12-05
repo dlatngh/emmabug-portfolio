@@ -8,7 +8,7 @@ import { getObjectUrl } from "@/utils/aws/s3";
 interface Preview {
   _id: string;
   preview: string;
-  title: string;
+  artName: string;
 }
 
 /**
@@ -33,7 +33,7 @@ export default function Gallery() {
             className="w-full h-auto aspect-square flex justify-center items-center hover:opacity-50 transition-opacity hover:cursor-pointer"
           >
             <Image
-              src={getObjectUrl(item.title, item.preview)}
+              src={getObjectUrl(item.artName, item.preview)}
               className="object-cover h-full w-full text-black"
               width={1000}
               height={1000}
